@@ -1606,7 +1606,9 @@
 
     .prompt-modal-card {
       width: 100%;
-      max-width: 440px;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
       background: linear-gradient(180deg, #091f68 0%, #051342 100%);
       border: 2px solid #3c6ef0;
       border-radius: 20px;
@@ -1614,6 +1616,230 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(60, 110, 240, 0.4);
+    }
+
+    .prompt-media-box {
+      background: rgba(3, 10, 36, 0.85);
+      border: 1.5px dashed rgba(75, 120, 240, 0.45);
+      border-radius: 14px;
+      padding: 12px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .prompt-media-box.drag-over {
+      border-color: #00e5ff;
+      background: rgba(10, 30, 80, 0.9);
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.35);
+    }
+
+    .prompt-upload-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-attach-media {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(90deg, rgba(35, 80, 220, 0.35), rgba(60, 120, 250, 0.25));
+      border: 1.5px solid rgba(85, 140, 255, 0.5);
+      color: #e2ebff;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-attach-media:hover {
+      border-color: #00e5ff;
+      color: #ffffff;
+      background: linear-gradient(90deg, rgba(35, 100, 240, 0.55), rgba(70, 140, 255, 0.45));
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .prompt-supported-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .prompt-format-chip {
+      font-size: 10.5px;
+      color: #9cb5ff;
+      background: rgba(15, 30, 80, 0.65);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(75, 120, 240, 0.25);
+    }
+
+    .prompt-media-preview-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .prompt-media-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(75, 120, 240, 0.25);
+    }
+
+    .prompt-media-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .prompt-media-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .badge-image { background: #9c27b0; color: #ffffff; }
+    .badge-video { background: #e91e63; color: #ffffff; }
+    .badge-audio { background: #ff9800; color: #000000; }
+    .badge-pdf { background: #f44336; color: #ffffff; }
+    .badge-docx, .badge-text { background: #2196f3; color: #ffffff; }
+
+    .prompt-media-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+    }
+
+    .prompt-media-size {
+      font-size: 11px;
+      color: #8aa8f8;
+      flex-shrink: 0;
+    }
+
+    .btn-remove-media {
+      background: rgba(255, 50, 70, 0.15);
+      border: 1px solid rgba(255, 80, 100, 0.4);
+      color: #ff8a80;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-remove-media:hover {
+      background: rgba(255, 50, 70, 0.4);
+      border-color: #ff5252;
+      color: #ffffff;
+    }
+
+    .btn-prompt-change {
+      background: rgba(40, 80, 180, 0.3);
+      border: 1px solid rgba(80, 140, 255, 0.4);
+      color: #b0ccff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-prompt-change:hover {
+      background: rgba(50, 100, 220, 0.5);
+      color: #ffffff;
+      border-color: #558aff;
+    }
+
+    .prompt-media-viewer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .prompt-media-img-preview {
+      max-width: 100%;
+      max-height: 140px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .prompt-media-video-preview {
+      width: 100%;
+      max-height: 160px;
+      border-radius: 8px;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      outline: none;
+    }
+
+    .prompt-audio-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      background: rgba(10, 25, 70, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(80, 140, 255, 0.25);
+    }
+
+    .prompt-audio-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #5ce1e6;
+      font-weight: 600;
+    }
+
+    .prompt-media-audio-preview {
+      width: 100%;
+      height: 36px;
+      outline: none;
+      filter: invert(0.9) hue-rotate(180deg);
+      border-radius: 18px;
+    }
+
+    .prompt-doc-card {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(10, 25, 70, 0.6);
+      border-radius: 10px;
+      border: 1px solid rgba(80, 140, 255, 0.25);
     }
 
     .prompt-textarea {
@@ -1668,7 +1894,7 @@
 
     <!-- Hidden native file inputs -->
     <input type="file" id="homeworkFileInput" multiple accept=".docx,.pdf" style="display:none;">
-    <input type="file" id="promptFileInput" accept=".docx,.pdf,.txt,.md" style="display:none;">
+    <input type="file" id="promptFileInput" accept=".png,.jpg,.jpeg,.webp,.gif,.bmp,.svg,.mp4,.webm,.mov,.m4v,.mkv,.avi,.mp3,.wav,.ogg,.m4a,.aac,.flac,.docx,.pdf,.txt,.md,image/*,video/*,audio/*" style="display:none;">
 
     <!-- ========================================================
          MAIN APP SHELL (Header + Views)
@@ -1995,21 +2221,61 @@
     </div>
 
     <!-- ========================================================
-         MODAL 1: PROMPT DIALOG
+         MODAL 1: PROMPT DIALOG (With Image, Video, MP3 & Doc support)
          ======================================================== -->
     <div class="prompt-modal-overlay" id="promptModalOverlay">
       <div class="prompt-modal-card">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="font-size:16px; font-weight:700;">Add Prompt Instructions</h3>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:18px;">💡</span>
+            <h3 style="font-size:16px; font-weight:700; color:#ffffff;">Add Prompt & Media Instructions</h3>
+          </div>
           <span class="popup-close" id="btnClosePromptModal">&times;</span>
         </div>
+
+        <p style="font-size:12px; color:#9cb5ff; margin:0; line-height:1.4;">
+          Add custom text guidance or attach reference media (image, video, .mp3 audio, or document) for the AI homework solver.
+        </p>
+
         <textarea class="prompt-textarea" id="customPromptInput"
-          placeholder="Add custom guidance for answering the homework (e.g. 'Show full step-by-step working for math problems')..."></textarea>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <button class="btn-load-key" id="btnAttachPromptFile">Attach Source/Ref File</button>
-          <button class="btn-load-key" id="btnSavePromptModal" style="background:#00c853;">Save Prompt</button>
+          placeholder="Add custom guidance for answering the homework (e.g. 'Show full step-by-step working for math problems' or 'Analyze the attached diagram')..."></textarea>
+
+        <!-- Media Attachment & Preview Box -->
+        <div class="prompt-media-box" id="promptMediaBox">
+          <!-- Shown when NO file attached -->
+          <div class="prompt-upload-zone" id="promptUploadZone">
+            <button type="button" class="btn-attach-media" id="btnAttachPromptFile">
+              <span>📎</span>
+              <span>Attach Image, Video, MP3 or Document</span>
+            </button>
+            <div class="prompt-supported-chips">
+              <span class="prompt-format-chip">🖼️ Image (PNG, JPG, WebP)</span>
+              <span class="prompt-format-chip">🎥 Video (MP4, WebM, MOV)</span>
+              <span class="prompt-format-chip">🎵 Audio (.MP3, WAV, M4A)</span>
+              <span class="prompt-format-chip">📄 Doc (.docx, .pdf, .txt)</span>
+            </div>
+          </div>
+
+          <!-- Shown when a file IS attached -->
+          <div class="prompt-media-preview-container" id="promptMediaPreviewContainer" style="display:none;">
+            <div class="prompt-media-header">
+              <div class="prompt-media-meta">
+                <span class="prompt-media-badge" id="promptMediaBadge">MEDIA</span>
+                <span class="prompt-media-name" id="attachedPromptFileName"></span>
+                <span class="prompt-media-size" id="attachedPromptFileSize"></span>
+              </div>
+              <button type="button" class="btn-remove-media" id="btnRemovePromptFile" title="Remove attached file">✕ Detach</button>
+            </div>
+            <!-- Dynamic preview player / thumbnail container -->
+            <div class="prompt-media-viewer" id="promptMediaViewer"></div>
+          </div>
         </div>
-        <div id="attachedPromptFileName" style="font-size:11px; color:#5ce1e6;"></div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+          <button type="button" class="btn-prompt-change" id="btnChangePromptFile" style="display:none;">Replace File</button>
+          <div style="flex:1;"></div>
+          <button class="btn-load-key" id="btnSavePromptModal" style="background:linear-gradient(90deg, #00c853, #00e676); color:#003311; font-weight:700;">Save Prompt</button>
+        </div>
       </div>
     </div>
 
@@ -2134,13 +2400,22 @@
 
         btnAddPrompt: document.getElementById('btnAddPrompt'),
         promptIcon: document.getElementById('promptIcon'),
+        promptLabel: document.getElementById('promptLabel'),
         promptFileInput: document.getElementById('promptFileInput'),
         promptModalOverlay: document.getElementById('promptModalOverlay'),
         customPromptInput: document.getElementById('customPromptInput'),
+        promptMediaBox: document.getElementById('promptMediaBox'),
+        promptUploadZone: document.getElementById('promptUploadZone'),
+        promptMediaPreviewContainer: document.getElementById('promptMediaPreviewContainer'),
+        promptMediaBadge: document.getElementById('promptMediaBadge'),
         btnAttachPromptFile: document.getElementById('btnAttachPromptFile'),
+        btnChangePromptFile: document.getElementById('btnChangePromptFile'),
+        btnRemovePromptFile: document.getElementById('btnRemovePromptFile'),
         btnSavePromptModal: document.getElementById('btnSavePromptModal'),
         btnClosePromptModal: document.getElementById('btnClosePromptModal'),
         attachedPromptFileName: document.getElementById('attachedPromptFileName'),
+        attachedPromptFileSize: document.getElementById('attachedPromptFileSize'),
+        promptMediaViewer: document.getElementById('promptMediaViewer'),
 
         btnModelSelect: document.getElementById('btnModelSelect'),
         currentModelLabel: document.getElementById('currentModelLabel'),
@@ -2208,6 +2483,7 @@
         applyStoredSettings();
         updateApiKeyVisuals();
         updateHistoryLists();
+        updatePromptButtonVisuals();
       }
 
       function checkInitialAuth() {
@@ -2966,8 +3242,8 @@
 
             updateProgress(pctBase + 25, `Generating answers with ${state.currentModel}...`);
 
-            // Step 4: Generate answers with Gemini API
-            let answers = await callGeminiSolver(cleanProblemText, sourceRefText, state.customPromptText);
+            // Step 4: Generate answers with Gemini API (supports Image, Video, MP3 audio, and Docs)
+            let answers = await callGeminiSolver(cleanProblemText, sourceRefText, state.customPromptText, state.promptAttachedFile);
 
             if (state.isCancelling) break;
 
@@ -2977,7 +3253,7 @@
 
             while (verifyAttempts < 2 && !isVerified && !state.isCancelling) {
               updateProgress(pctBase + 45, `Verifying answers (attempt ${verifyAttempts + 1})...`);
-              const verifyResult = await callGeminiVerifier(cleanProblemText, answers);
+              const verifyResult = await callGeminiVerifier(cleanProblemText, answers, state.promptAttachedFile);
 
               if (verifyResult.verified) {
                 isVerified = true;
@@ -2989,7 +3265,8 @@
                     cleanProblemText,
                     sourceRefText,
                     (state.customPromptText ? state.customPromptText + '\n' : '') +
-                    `Previous answer verification feedback: ${verifyResult.feedback}. Please correct these mistakes.`
+                    `Previous answer verification feedback: ${verifyResult.feedback}. Please correct these mistakes.`,
+                    state.promptAttachedFile
                   );
                 }
               }
@@ -3054,7 +3331,7 @@
       // ----------------------------------------------------
       // GEMINI API INTEGRATION
       // ----------------------------------------------------
-      async function callGeminiSolver(problemText, sourceRef, userPrompt) {
+      async function callGeminiSolver(problemText, sourceRef, userPrompt, attachedMedia) {
         const systemPrompt = `You are an expert academic tutor and homework solver for "A* - the homework destroyer".
 Your task is to accurately and completely solve all homework questions, exercises, or blank fields in the provided assignment.
 
@@ -3086,26 +3363,79 @@ For example, for a 3-column table asking for 3 classroom items, their materials,
 2. If there are fill-in-the-blank lines in paragraphs (e.g. '____' or '.....'), put the answers into the "blanks" array in sequential order.
 3. Keep answers concise, highly accurate, and appropriate for the school grade level.`;
 
+        let mediaNote = '';
+        const inlineParts = [];
+
+        if (attachedMedia) {
+          if (attachedMedia.category === 'image' && attachedMedia.base64) {
+            mediaNote = `\n[ATTACHED MEDIA REFERENCE - IMAGE: "${attachedMedia.name}"]\nThe user has attached an image as reference or supplementary material for this homework. Carefully analyze the image visual content (diagrams, photos, math notations, or handwritten questions) to answer all questions accurately.\n`;
+            inlineParts.push({
+              inlineData: {
+                mimeType: attachedMedia.mimeType || 'image/jpeg',
+                data: attachedMedia.base64
+              }
+            });
+          } else if (attachedMedia.category === 'video' && attachedMedia.base64) {
+            mediaNote = `\n[ATTACHED MEDIA REFERENCE - VIDEO: "${attachedMedia.name}"]\nThe user has attached a video as reference material for this homework. Carefully analyze the visual frames and audio speech in this video to answer any associated questions or assignments.\n`;
+            inlineParts.push({
+              inlineData: {
+                mimeType: attachedMedia.mimeType || 'video/mp4',
+                data: attachedMedia.base64
+              }
+            });
+          } else if (attachedMedia.category === 'audio' && attachedMedia.base64) {
+            mediaNote = `\n[ATTACHED MEDIA REFERENCE - AUDIO / MP3: "${attachedMedia.name}"]\nThe user has attached an audio/speech recording (MP3 / sound track). Please listen carefully to the speech, language, dialogue, or sound cues in this audio to accurately answer the homework questions.\n`;
+            inlineParts.push({
+              inlineData: {
+                mimeType: attachedMedia.mimeType || 'audio/mp3',
+                data: attachedMedia.base64
+              }
+            });
+          } else if (attachedMedia.category === 'pdf' && attachedMedia.base64) {
+            mediaNote = `\n[ATTACHED REFERENCE DOCUMENT - PDF: "${attachedMedia.name}"]\n`;
+            inlineParts.push({
+              inlineData: {
+                mimeType: 'application/pdf',
+                data: attachedMedia.base64
+              }
+            });
+          } else if (attachedMedia.text) {
+            mediaNote = `\n[ATTACHED REFERENCE DOCUMENT: "${attachedMedia.name}"]\n---\n${attachedMedia.text}\n---\n`;
+          }
+        }
+
         const userContent = `Here is the homework text to solve:
 ---
 ${problemText}
 ---
 
 ${sourceRef ? `Original source reference text:\n---\n${sourceRef}\n---\n` : ''}
+${mediaNote}
 ${userPrompt ? `Additional user instructions:\n${userPrompt}\n` : ''}
 
 Please solve every exercise and return the answers structured to fill in the exact spaces and table cells.`;
 
-        return await executeGeminiRequest(systemPrompt, userContent);
+        return await executeGeminiRequest(systemPrompt, userContent, inlineParts);
       }
 
-      async function callGeminiVerifier(problemText, generatedAnswers) {
-        const systemPrompt = `You are a strict grading evaluator. Verify the correctness of the generated answers against the questions.
+      async function callGeminiVerifier(problemText, generatedAnswers, attachedMedia) {
+        const systemPrompt = `You are a strict grading evaluator. Verify the correctness of the generated answers against the questions and any attached media reference.
 Respond strictly in JSON format:
 {
   "verified": true or false,
   "feedback": "brief explanation if false, or 'Correct' if true"
 }`;
+
+        const inlineParts = [];
+        if (attachedMedia && attachedMedia.base64) {
+          if (attachedMedia.category === 'image') {
+            inlineParts.push({ inlineData: { mimeType: attachedMedia.mimeType || 'image/jpeg', data: attachedMedia.base64 } });
+          } else if (attachedMedia.category === 'video') {
+            inlineParts.push({ inlineData: { mimeType: attachedMedia.mimeType || 'video/mp4', data: attachedMedia.base64 } });
+          } else if (attachedMedia.category === 'audio') {
+            inlineParts.push({ inlineData: { mimeType: attachedMedia.mimeType || 'audio/mp3', data: attachedMedia.base64 } });
+          }
+        }
 
         const userContent = `Questions:
 ${problemText}
@@ -3116,7 +3446,7 @@ ${generatedAnswers}
 Is this 100% accurate?`;
 
         try {
-          const resp = await executeGeminiRequest(systemPrompt, userContent);
+          const resp = await executeGeminiRequest(systemPrompt, userContent, inlineParts);
           const jsonMatch = resp.match(/\{[\s\S]*\}/);
           if (jsonMatch) {
             return JSON.parse(jsonMatch[0]);
@@ -3127,14 +3457,21 @@ Is this 100% accurate?`;
         return { verified: true, feedback: 'Verified' };
       }
 
-      async function executeGeminiRequest(systemInstruction, userText) {
+      async function executeGeminiRequest(systemInstruction, userText, inlineParts = []) {
         // Candidate model list with graceful fallback if a specific model is not enabled on the user's key
         const candidates = state.currentModel.includes('3.8')
           ? ['gemini-3.8-flash', 'gemini-3.5-flash', 'gemini-flash-latest', 'gemini-3.5-flash-lite']
           : ['gemini-3.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3.8-flash'];
 
+        const userParts = [{ text: userText }];
+        if (Array.isArray(inlineParts) && inlineParts.length > 0) {
+          for (const part of inlineParts) {
+            userParts.push(part);
+          }
+        }
+
         const payload = {
-          contents: [{ role: 'user', parts: [{ text: userText }] }],
+          contents: [{ role: 'user', parts: userParts }],
           generationConfig: {
             temperature: 0.2,
             maxOutputTokens: 8192
@@ -3951,6 +4288,217 @@ Is this 100% accurate?`;
       }
 
       // ----------------------------------------------------
+      // PROMPT & MULTIMODAL MEDIA HELPERS (Image, Video, MP3 Audio, Doc)
+      // ----------------------------------------------------
+      function getMediaType(file) {
+        const name = (file && file.name) ? file.name.toLowerCase() : '';
+        const type = (file && file.type) ? file.type.toLowerCase() : '';
+
+        // Image files
+        if (type.startsWith('image/') || /\.(png|jpe?g|webp|gif|bmp|heic|heif|svg)$/i.test(name)) {
+          let mime = type || 'image/jpeg';
+          if (name.endsWith('.png')) mime = 'image/png';
+          else if (name.endsWith('.webp')) mime = 'image/webp';
+          else if (name.endsWith('.gif')) mime = 'image/gif';
+          else if (name.endsWith('.svg')) mime = 'image/svg+xml';
+          return { category: 'image', mimeType: mime, badge: 'IMAGE', icon: '🖼️', label: 'Image' };
+        }
+
+        // Video files
+        if (type.startsWith('video/') || /\.(mp4|webm|mov|m4v|mkv|avi)$/i.test(name)) {
+          let mime = type || 'video/mp4';
+          if (name.endsWith('.webm')) mime = 'video/webm';
+          else if (name.endsWith('.mov')) mime = 'video/quicktime';
+          return { category: 'video', mimeType: mime, badge: 'VIDEO', icon: '🎥', label: 'Video' };
+        }
+
+        // Audio / MP3 files
+        if (type.startsWith('audio/') || /\.(mp3|wav|ogg|m4a|aac|flac)$/i.test(name)) {
+          let mime = type || 'audio/mp3';
+          if (name.endsWith('.mp3')) mime = 'audio/mp3';
+          else if (name.endsWith('.wav')) mime = 'audio/wav';
+          else if (name.endsWith('.ogg')) mime = 'audio/ogg';
+          else if (name.endsWith('.m4a')) mime = 'audio/x-m4a';
+          return { category: 'audio', mimeType: mime, badge: 'AUDIO', icon: '🎵', label: 'MP3 / Audio' };
+        }
+
+        // PDF document
+        if (type === 'application/pdf' || name.endsWith('.pdf')) {
+          return { category: 'pdf', mimeType: 'application/pdf', badge: 'PDF', icon: '📄', label: 'PDF Document' };
+        }
+
+        // Word document (.docx)
+        if (name.endsWith('.docx')) {
+          return { category: 'docx', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', badge: 'DOCX', icon: '📝', label: 'Word Document' };
+        }
+
+        // Plain text / markdown / fallback
+        return { category: 'text', mimeType: type || 'text/plain', badge: 'DOC', icon: '📄', label: 'Document / Text' };
+      }
+
+      function readFileAsBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const dataUrl = reader.result;
+            const base64 = (typeof dataUrl === 'string') ? (dataUrl.split(',')[1] || '') : '';
+            resolve({ dataUrl, base64 });
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      async function processPromptFile(file) {
+        if (!file) return;
+
+        const meta = getMediaType(file);
+        const fileObj = {
+          file: file,
+          name: file.name,
+          size: file.size,
+          category: meta.category,
+          mimeType: meta.mimeType,
+          badge: meta.badge,
+          icon: meta.icon,
+          label: meta.label,
+          dataUrl: null,
+          base64: null,
+          text: null
+        };
+
+        try {
+          if (['image', 'video', 'audio', 'pdf'].includes(meta.category)) {
+            const res = await readFileAsBase64(file);
+            fileObj.dataUrl = res.dataUrl;
+            fileObj.base64 = res.base64;
+          }
+
+          if (meta.category === 'docx') {
+            try {
+              const buffer = await file.arrayBuffer();
+              fileObj.text = await extractDocxText(buffer);
+            } catch (e) {
+              console.warn('Could not extract docx text for prompt:', e);
+            }
+          } else if (meta.category === 'text') {
+            try {
+              fileObj.text = await file.text();
+            } catch (e) {
+              console.warn('Could not read prompt text file:', e);
+            }
+          }
+
+          state.promptAttachedFile = fileObj;
+          renderPromptMediaPreview(fileObj);
+          updatePromptButtonVisuals();
+          showSuccessToast(`Attached ${meta.label}: ${file.name}`);
+        } catch (err) {
+          console.error('Error processing prompt file:', err);
+          showErrorToast('FILE_ERR', `Failed to read ${file.name}: ${err.message}`, '⚠️');
+        }
+      }
+
+      function renderPromptMediaPreview(fileObj) {
+        if (!fileObj) {
+          dom.promptUploadZone.style.display = 'flex';
+          dom.promptMediaPreviewContainer.style.display = 'none';
+          dom.btnChangePromptFile.style.display = 'none';
+          dom.promptMediaViewer.innerHTML = '';
+          return;
+        }
+
+        dom.promptUploadZone.style.display = 'none';
+        dom.promptMediaPreviewContainer.style.display = 'flex';
+        dom.btnChangePromptFile.style.display = 'inline-block';
+
+        dom.promptMediaBadge.textContent = fileObj.badge;
+        dom.promptMediaBadge.className = `prompt-media-badge badge-${fileObj.category}`;
+        dom.attachedPromptFileName.textContent = fileObj.name;
+        dom.attachedPromptFileSize.textContent = formatFileSize(fileObj.size);
+
+        let viewerHtml = '';
+        if (fileObj.category === 'image' && fileObj.dataUrl) {
+          viewerHtml = `<img src="${fileObj.dataUrl}" alt="${fileObj.name}" class="prompt-media-img-preview" />`;
+        } else if (fileObj.category === 'video' && fileObj.dataUrl) {
+          viewerHtml = `<video controls class="prompt-media-video-preview" src="${fileObj.dataUrl}"></video>`;
+        } else if (fileObj.category === 'audio' && fileObj.dataUrl) {
+          viewerHtml = `
+            <div class="prompt-audio-card">
+              <div class="prompt-audio-info">
+                <span>🎵 ${fileObj.name}</span>
+                <span style="font-size:11px; color:#8aa8f8;">${formatFileSize(fileObj.size)}</span>
+              </div>
+              <audio controls class="prompt-media-audio-preview" src="${fileObj.dataUrl}"></audio>
+            </div>
+          `;
+        } else if (fileObj.category === 'pdf') {
+          viewerHtml = `
+            <div class="prompt-doc-card">
+              <div style="font-size:24px;">📄</div>
+              <div>
+                <div style="font-weight:600; color:#fff;">${fileObj.name}</div>
+                <div style="font-size:11px; color:#5ce1e6;">PDF Document reference attached (${formatFileSize(fileObj.size)})</div>
+              </div>
+            </div>
+          `;
+        } else {
+          const textPreview = fileObj.text ? fileObj.text.slice(0, 150) + (fileObj.text.length > 150 ? '...' : '') : 'Document attached';
+          viewerHtml = `
+            <div class="prompt-doc-card">
+              <div style="font-size:24px;">📝</div>
+              <div style="overflow:hidden;">
+                <div style="font-weight:600; color:#fff;">${fileObj.name}</div>
+                <div style="font-size:11px; color:#9cb5ff; margin-top:2px;">${textPreview}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        dom.promptMediaViewer.innerHTML = viewerHtml;
+      }
+
+      function updatePromptButtonVisuals() {
+        const hasPrompt = Boolean(state.customPromptText && state.customPromptText.trim());
+        const hasFile = Boolean(state.promptAttachedFile);
+
+        if (!hasPrompt && !hasFile) {
+          dom.btnAddPrompt.classList.remove('file-loaded');
+          dom.promptIcon.textContent = '📁';
+          dom.promptLabel.textContent = 'Add prompt(optional)';
+          dom.btnAddPrompt.title = 'Add prompt instructions or attach media';
+          return;
+        }
+
+        dom.btnAddPrompt.classList.add('file-loaded');
+
+        if (hasFile) {
+          const cat = state.promptAttachedFile.category;
+          if (cat === 'image') {
+            dom.promptIcon.textContent = '🖼️';
+            dom.promptLabel.textContent = hasPrompt ? 'Prompt + Image' : 'Image Attached';
+          } else if (cat === 'video') {
+            dom.promptIcon.textContent = '🎥';
+            dom.promptLabel.textContent = hasPrompt ? 'Prompt + Video' : 'Video Attached';
+          } else if (cat === 'audio') {
+            dom.promptIcon.textContent = '🎵';
+            dom.promptLabel.textContent = hasPrompt ? 'Prompt + MP3' : 'Audio Attached';
+          } else if (cat === 'pdf') {
+            dom.promptIcon.textContent = '📄';
+            dom.promptLabel.textContent = hasPrompt ? 'Prompt + PDF' : 'PDF Attached';
+          } else {
+            dom.promptIcon.textContent = '📝';
+            dom.promptLabel.textContent = hasPrompt ? 'Prompt + Doc' : 'Doc Attached';
+          }
+          dom.btnAddPrompt.title = `${state.promptAttachedFile.name} (${formatFileSize(state.promptAttachedFile.size)})${hasPrompt ? `\nPrompt: "${state.customPromptText.slice(0, 60)}..."` : ''}`;
+        } else {
+          dom.promptIcon.textContent = '✍️';
+          dom.promptLabel.textContent = 'Prompt Added';
+          dom.btnAddPrompt.title = `Prompt: "${state.customPromptText.slice(0, 80)}..."`;
+        }
+      }
+
+      // ----------------------------------------------------
       // EVENT LISTENERS SETUP
       // ----------------------------------------------------
       function setupEventListeners() {
@@ -4066,38 +4614,80 @@ Is this 100% accurate?`;
           }
         });
 
-        // 7. Prompt modal & file
+        // 7. Prompt modal & media file events
         dom.btnAddPrompt.addEventListener('click', () => {
           dom.customPromptInput.value = state.customPromptText;
-          dom.attachedPromptFileName.textContent = state.promptAttachedFile ? `Attached: ${state.promptAttachedFile.name}` : '';
+          renderPromptMediaPreview(state.promptAttachedFile);
           dom.promptModalOverlay.classList.add('show');
         });
+
         dom.btnClosePromptModal.addEventListener('click', () => {
           dom.promptModalOverlay.classList.remove('show');
         });
+
         dom.btnSavePromptModal.addEventListener('click', () => {
           state.customPromptText = dom.customPromptInput.value.trim();
-          if (state.customPromptText || state.promptAttachedFile) {
-            dom.btnAddPrompt.classList.add('file-loaded');
-            dom.promptIcon.textContent = '📄';
-          } else {
-            dom.btnAddPrompt.classList.remove('file-loaded');
-            dom.promptIcon.textContent = '📁';
-          }
+          updatePromptButtonVisuals();
           dom.promptModalOverlay.classList.remove('show');
-          showSuccessToast('Prompt saved!');
+          if (state.promptAttachedFile) {
+            showSuccessToast(`Prompt & ${state.promptAttachedFile.label} saved!`);
+          } else if (state.customPromptText) {
+            showSuccessToast('Prompt saved!');
+          } else {
+            showSuccessToast('Prompt cleared');
+          }
         });
+
         dom.btnAttachPromptFile.addEventListener('click', () => {
           dom.promptFileInput.click();
         });
+
+        if (dom.btnChangePromptFile) {
+          dom.btnChangePromptFile.addEventListener('click', () => {
+            dom.promptFileInput.click();
+          });
+        }
+
+        if (dom.btnRemovePromptFile) {
+          dom.btnRemovePromptFile.addEventListener('click', () => {
+            state.promptAttachedFile = null;
+            dom.promptFileInput.value = '';
+            renderPromptMediaPreview(null);
+            updatePromptButtonVisuals();
+            showSuccessToast('Media detached');
+          });
+        }
+
         dom.promptFileInput.addEventListener('change', async (e) => {
           if (e.target.files && e.target.files[0]) {
-            state.promptAttachedFile = e.target.files[0];
-            dom.attachedPromptFileName.textContent = `Attached: ${state.promptAttachedFile.name}`;
-            dom.promptIcon.textContent = '📄';
-            dom.btnAddPrompt.classList.add('file-loaded');
+            await processPromptFile(e.target.files[0]);
           }
         });
+
+        // Drag & Drop support for prompt modal media box
+        if (dom.promptMediaBox) {
+          ['dragenter', 'dragover'].forEach(evt => {
+            dom.promptMediaBox.addEventListener(evt, (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              dom.promptMediaBox.classList.add('drag-over');
+            });
+          });
+
+          ['dragleave', 'dragend', 'drop'].forEach(evt => {
+            dom.promptMediaBox.addEventListener(evt, (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              dom.promptMediaBox.classList.remove('drag-over');
+            });
+          });
+
+          dom.promptMediaBox.addEventListener('drop', async (e) => {
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+              await processPromptFile(e.dataTransfer.files[0]);
+            }
+          });
+        }
 
         // 8. Text preview drawer toggle
         dom.btnTogglePreviewDrawer.addEventListener('click', togglePreviewDrawer);

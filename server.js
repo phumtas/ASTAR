@@ -18,7 +18,17 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.mp3': 'audio/mpeg',
+  '.wav': 'audio/wav',
+  '.ogg': 'audio/ogg',
+  '.m4a': 'audio/mp4',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
+  '.mov': 'video/quicktime',
   '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   '.pdf': 'application/pdf'
 };
@@ -84,7 +94,12 @@ function forwardToGoogle(model, apiKey, payload, apiVersion, callback) {
           v1Payload = JSON.parse(JSON.stringify(payload));
           delete v1Payload.systemInstruction;
           if (v1Payload.contents && v1Payload.contents[0] && v1Payload.contents[0].parts) {
-            v1Payload.contents[0].parts[0].text = sysText + '\n\n' + v1Payload.contents[0].parts[0].text;
+            const textPart = v1Payload.contents[0].parts.find(p => p.text !== undefined);
+            if (textPart) {
+              textPart.text = sysText + '\n\n' + textPart.text;
+            } else {
+              v1Payload.contents[0].parts.unshift({ text: sysText });
+            }
           }
         }
         forwardToGoogle(cleanModel, cleanKey, v1Payload, 'v1', callback);
