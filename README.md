@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # A* - the homework destroyer 🌟
+=======
+# A* - ⚠ [vibe code /agentic engineered] made with antigravity
+>>>>>>> 35df0f7e6d189e05c4157cfb965b870c87576cb1
 
 A high-performance homework solving web application designed from the exact mockups in `prompt/Ui [1].pdf` and flowchart in `prompt/Algorithm[V.2].png`, built for deployment as a **Google Apps Script Web App** and runnable locally.
 
@@ -54,6 +58,7 @@ You can launch the app in any of the following ways:
 - **`A-Star-Homework-Destroyer.exe`**: Double-click to instantly open `Index.html` in your default browser without showing any console window.
 - **`open.bat`**: Double-click to launch `Index.html` directly in your browser.
 - **`start.bat`**: Double-click to start the local preview server (`http://localhost:3000`) with the built-in Gemini API proxy and automatically open your browser.
+-or you can open the 'Index.html' manually 
 
 ### 2. Command Line
 ```bash
@@ -62,6 +67,7 @@ node server.js
 *(or run `npm start`)*
 
 Then open your browser to:
+<<<<<<< HEAD
 👉 **[http://localhost:3000](http://localhost:3000)** (or [http://127.0.0.1:3000](http://127.0.0.1:3000))
 
 ---
@@ -80,3 +86,6 @@ Then open your browser to:
    - Execute as: **User accessing the web app** (or **Me**).
    - Who has access: **Anyone**.
 8. Click **Deploy** and open the generated Web App URL!
+=======
+-> **[http://localhost:3000](http://localhost:3000)** (or [http://127.0.0.1:3000](http://127.0.0.1:3000))
+>>>>>>> 35df0f7e6d189e05c4157cfb965b870c87576cb1
